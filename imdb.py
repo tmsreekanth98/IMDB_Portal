@@ -15,13 +15,13 @@ status = open('info.txt', 'a')
 def popular_tv_shows():
     url = 'https://api.themoviedb.org/3/tv/popular?api_key=ffb07b773769d55c36ccd83845385205&language=en-US'
     response = requests.get(url)
-    u = json.loads(response.text)
+    response_json = json.loads(response.text)
 
     print ("\n"+"----------------------------------TOP 10"+" TV SHOWS ACCORDING TO IMDB RATINGS---------------------------------"+"\n\n")
     status.write ("\n"+"---------------------------TOP 10"+" TV SHOWS ACCORDING TO IMDB RATINGS-----------------------------"+"\n\n")
     
     for x in range (10):
-        print(str(x+1)+".\t "+u['results'][x]['name'])
+        print(str(x+1)+".\t "+response_json['results'][x]['name'])
 
 def info_movie():
     name = raw_input('\nEnter the title of the movie: ')
